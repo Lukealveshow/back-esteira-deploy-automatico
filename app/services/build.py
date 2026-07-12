@@ -65,9 +65,15 @@ def buildar_modulo(modulo: str, branch: str = "main")-> ResultadoBuild:
     if not ok:
         return ResultadoBuild(sucesso=False, log=log_total)
     repo_dir = config.WORKSPACE_DIR / "ebop"
+    modulo_dir = repo_dir / modulo
+
+    if not modulo_dir.exists():
+        log_total += f"\nPasta do módulo não encontrada: {modulo_dir}\n"
+        return ResultadoBuild(sucesso=False, log=log_total)
+
     ok, log_maven = _executar_comando(
-                [config.MAVEN_CMD, "clean", "package", "-pl", modulo, "-am"],
-        cwd=repo_dir,
+        [config.MAVEN_CMD, "clean", "package"],
+        cwd=modulo_dir,
     )
     log_total += f"$ mvn clean package -pl {modulo} -am\n{log_maven}\n"
 
