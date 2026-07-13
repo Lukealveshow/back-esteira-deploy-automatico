@@ -28,7 +28,7 @@ def preparar_workspace(branch: str) -> tuple[bool, str]:
 
     if not (repo_dir / ".git").exists():
         ok, saida = _executar_comando(
-                        ["git", "clone", config.git_url_autenticada(), str(repo_dir)],
+                        ["git", "clone", config.git_url_authenticada(), str(repo_dir)],
             cwd=config.WORKSPACE_DIR,
         )
 

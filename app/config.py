@@ -8,7 +8,7 @@ GIT_USUARIO = os.getenv("GIT_USUARIO", "")
 GIT_TOKEN = os.getenv("GIT_TOKEN", "")
 GIT_REPO_URL = os.getenv("GIT_REPO_URL", "")
 
-def git_url_authenticad() -> str:
+def git_url_authenticada() -> str:
     if not GIT_REPO_URL:
         raise ValueError("URL de repositório Git não configurada")
     if GIT_USUARIO and GIT_TOKEN:
